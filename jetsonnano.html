@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Binary</title>
+    <!-- Favicon-->
+    <link href="img/cod.png" rel="icon">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/font.css">
+
+    <script type="text/javascript">
+        document.oncontextmenu = function () { return false; }
+    </script>
+    <style>
+        table {
+            width: 1500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false">
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Binary</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="reference_main.html">자료실</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">Jetson Nano 기본 세팅</h1>
+                            <hr>
+                        </header>
+                        <!-- Preview image figure-->
+                        <figure class="mb-4"><img class="img-fluid rounded" src="img/jetsonnano.jpg"></figure>
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <p class="fs-7 mb-4">Jetson nano에 OS를 설치하고 난 후 기본 세팅과 프로젝트에 필요한 라이브러리를 설치한다. <br>아래 순서를
+                                따라하도록 한다.</p>
+                            <p class="fs-3 mb-6"><b>OS 기본 세팅</b></p>
+                            <p class="fs-7 mb-4" style="color: orange;"><a
+                                    href="https://makingrobot.tistory.com/93?category=938629">참고자료</a></p>
+                            <p class="fs-7 mb-4"> OS 기본 세팅을 마친 후 터미널을 열어 최신 상태로 update와 upgrade를 해준다.</p>
+                            <table border="1">
+                                <tr>
+                                    <th># update <text style="color: goldenrod;">&</text> upgrade <br>
+                                        sudo apt-<text style="color: blue;">get</text> update <br>
+                                        sudo apt-<text style="color: blue;">get</text> upgrade</th>
+                                </tr>
+                            </table> <br>
+                            </p>
+                            <p class="fs-3 mb-6"><b>방열판 제어</p></b>
+                            <p>방열팬이 있다면 방열팬을 부착하고 아래 github에 접속해 방열팬을 제어할 수 있게 한다.</p> <br>
+                            <p><a href="https://github.com/jugfk/jetson-fan-ctl">방열판 제어</a></p><br>
+                            <p class="fs-3 mb-6"><b>VSCode 설치</p></b>
+                            <p>jetpack에 VSCode를 설치하여 프로그램을 구동할 수 있는 환경을 만들어 준다. <br>VSCode는 터미널에서 쉽게 설치할 수 있다.</p>
+                            <table border="1">
+                                <tr>
+                                    <th># VScode install<br> <br>
+                                        # <text style="color: purple">1.</text> vscode 다운로드<br>
+                                        git clone https://github.com/JetsonHacksNano/installVSCode.git <br> <br>
+
+                                        # <text style="color: purple">2.</text> install 파일이 있는 폴더로 이동 <br>
+                                        cd installVSCode <br><br>
+
+                                        # <text style="color: purple">3.</text> 설치 파일 실행 <br>
+                                        ./installVSCode.sh <br>
+                                </tr>
+                            </table> <br>
+                            <p class="fs-3 mb-6"><b>라이브러리 설치</b></p>
+                            <p>이제부터 프로젝트에 필요한 라이브러리를 설치해 주도록 한다. <br> 순서는 아래와 같다.</p>
+                            1. pip, pkg 설치 <br>
+                            2. opencv <br>
+                            3. cmake <br>
+                            4. dlib <br>
+                            5. face_recognition <br>
+                            <br>
+                            <p>순서로 설치해준 후 프로그램을 실행시켜 잘 작동하는지 확인하는 것이 중요하다. <br>
+                                각 라이브러리는 설치까지 시간이 소요되므로 jetpack에 화면보호기 설정을 해주는 것이 좋다. </p> <br>
+                            <p class="fs-3 mb-6"><b>pip, package 설치</b></p>
+                            <p>python 2.7 버전의 pip 설치</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        sudo apt-<text style="color: steelblue">get</text> install python-pip
+                                </tr>
+                            </table> <br>
+                            <p>각종 패키지 설치</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        sudo apt-<text style="color: steelblue">get</text> install libhdf5-serial-dev
+                                        hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev
+                                </tr>
+                            </table> <br>
+                            <p>python3 버전의 pip 설치</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        sudo apt-<text style="color: steelblue">get</text> install python3-pip
+                            </table> <br>
+                            <p>pip3 업그레이드, 패키지 설치</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        sudo pip3 install <text style="color: purple">-U</text> pip testresources
+                                        setuptools
+                            </table> <br>
+                            <p>python3 각종 패키지 설치</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        sudo pip3 install <text style="color: purple">-U</text> numpy<text
+                                            style="color: purple">==1.16.1</text> future<text
+                                            style="color: purple">==0.18.2</text> mock<text
+                                            style="color: purple">==3.0.5</text> h5py<text
+                                            style="color: purple">==2.10.0</text> keras-preprocessing<text
+                                            style="color: purple">==1.1.1</text> keras-applications<text
+                                            style="color: purple">==1.0.8</text> gast<text
+                                            style="color: purple">==0.2.2</text> enum34 futures protobuf pybind11
+                            </table> <br>
+                            <p class="fs-3 mb-6"><b>opencv install</b></p>
+                            <p>opencv 설치</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        mkdir opencv <br>
+                                        cd opencv <br>
+                                        wget <text style="color: purple">-O</text> opencv.zip
+                                        https://github.com/opencv/opencv/archive/3.4.0.zip <br>
+                                        wget <text style="color: purple">-O</text> opencv_contrib.zip <br>
+                                        https://github.com/opencv/opencv_contrib/archive/3.4.0.zip <br><br>
+
+                                        unzip opencv.zip <br>
+                                        unzip opencv_contrib.zip <br><br>
+
+                                        cd opencv<text style="color: purple">-3.4.0</text> <br>
+                                        mkdir build <br>
+                                        cd build <br>
+                            </table> <br>
+                            <p>opencv build</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        cmake <text style="color: purple">-D CMAKE_BUILD_TYPE=RELEASE</text> \ <br>
+                                        <text style="color: purple">-D CMAKE_INSTALL_PREFIX=/</text>usr<text
+                                            style="color: purple">/</text>local \ <br>
+                                        <text style="color: purple">-D WITH_TBB=OFF</text> \ <br>
+                                        <text style="color: purple">-D WITH_IPP=OFF</text> \ <br>
+                                        <text style="color: purple">-D WITH_1394=OFF</text> \ <br>
+                                        <text style="color: purple"> -D BUILD_WITH_DEBUG_INFO=OFF</text> \ <br>
+                                        <text style="color: purple">-D BUILD_DOCS=OFF</text> \ <br>
+                                        <text style="color: purple">-D INSTALL_C_EXAMPLES=ON</text> \ <br>
+                                        <text style="color: purple">-D INSTALL_PYTHON_EXAMPLES=ON</text> \
+                                        <br>
+                                        <text style="color: purple">-D BUILD_EXAMPLES=OFF</text> \ <br>
+                                        <text style="color: purple">-D BUILD_TESTS=OFF</text> \ <br>
+                                        <text style="color: purple">-D BUILD_PERF_TESTS=OFF</text> \ <br>
+                                        <text style="color: purple">-D WITH_QT=OFF</text> \ <br>
+                                        <text style="color: purple">-D WITH_GTK=ON</text> \ <br>
+                                        <text style="color: purple">-D WITH_OPENGL=ON</text> \ <br>
+                                        <text style="color: purple">-D
+                                            OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib<text
+                                                style="color: purple">-3.4.0/</text>modules</text> \ <br>
+                                        <text style="color: purple">-D WITH_V4L=ON</text> \ <br>
+                                        <text style="color: purple">-D WITH_FFMPEG=ON</text> \ <br>
+                                        <text style="color: purple">-D WITH_XINE=ON</text> \ <br>
+                                        <text style="color: purple">-D BUILD_NEW_PYTHON_SUPPORT=ON</text> \
+                                        <br>
+                                        <text style="color: purple">-D
+                                            PYTHON2_INCLUDE_DIR=</text>/usr/include/python2.7 \ <br>
+                                        <text style="color: purple">-D
+                                            PYTHON2_NUMPY_INCLUDE_DIRS=</text>/usr/lib/python2.7/dist-packages/numpy/core/include/
+                                        \ <br>
+                                        <text style="color: purple">-D
+                                            PYTHON2_PACKAGES_PATH=</text>/usr/lib/python2.7/dist-packages\ <br>
+                                        <text style="color: purple">-D
+                                            PYTHON2_LIBRARY=</text>/usr/lib/x86_64-linux-gnu/libpython2.7.so\ <br>
+                                        <text style="color: purple">-D
+                                            PYTHON3_INCLUDE_DIR=</text>/usr/include/python3.6m \ <br>
+                                        <text style="color: purple">-D
+                                            PYTHON3_NUMPY_INCLUDE_DIRS=</text>/usr/lib/python3/dist-packages/numpy/core/include/
+                                        \ <br>
+                                        <text style="color: purple">-D
+                                            PYTHON3_PACKAGES_PATH=</text>/usr/lib/python3/dist-packages \ <br>
+                                        <text style="color: purple">-D
+                                            PYTHON3_LIBRARY=</text>/usr/lib/x86_64-linux-gnu/libpython3.6m.so \ <br>
+                                        ..<text style="color: purple">/</text> <br>
+                            </table> <br>
+                            <p>방열팬 설정</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        # 방열팬이 있을 경우 <br>
+                                        make -j4
+                                        <br> <br>
+                                        # 없을 경우 <br>
+                                        make -j2
+                            </table> <br>
+                            <p>opencv 컴파일</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        sudo make install <br>
+                                        sudo sh -c <text style="color: green">'echo '</text>/usr/local/lib' <text
+                                            style="color: green">> /etc/ld.so.conf.d/opencv.conf'</text><br>
+                                        sudo ldconfig
+                            </table> <br>
+                            <p>dlib 설치</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        # 행렬 계산에 필요한 numpy 설치 <br>
+                                        pip3 install numpy
+                            </table> <br>
+                            <p>엔비디아 cuda 라이브러리에 jetson nano 버그가 있으므로 dlib 설치시 변경점이 있다.</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        wget http://dlib.net/files/dlib-19.17.tar.bz2
+                                        <br><br>
+                                        tar jxvf dlib-19.17.tar.bz2
+                                        <br><br>
+                                        cd dlib-19.17
+                                        <br><br>
+                                        gedit dlib/cuda/cudnn_dlibapi.cpp
+                                        <br><br>
+                                        forward_algo = forward_best_algo;
+                                        ->//forward_algo = forward_best_algo; //주석처리
+                            </table> <br>
+                            <p>설치</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        sudo python3 setup.py install
+                                        <br><br>
+                                        sudo pip3 install face_recognition
+                            </table> <br>
+                            <p>설치를 완료하면 Jetson nano에 정상적으로 프로젝트를 실행시킬 수 있다.</p>
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Binary Website 2022</p>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Binary</title>
+    <!-- Favicon-->
+    <link href="img/cod.png" rel="icon">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/font.css">
+
+    <script type="text/javascript">
+        document.oncontextmenu = function () { return false; }
+    </script>
+    <style>
+        table {
+            width: 1500px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false">
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Binary</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="reference_main.html">자료실</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">DLib을 이용한 얼굴인식 출석부 제작</h1>
+                            <hr>
+                        </header>
+                        <!-- Preview image figure-->
+                        <figure class="mb-4">
+                            <center><img class="img-fluid rounded" src="img/dlib.png">
+                        </figure>
+                        </center>
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <p class="fs-7 mb-4">python을 이용하여 얼굴을 인식하고 시스템을 구축합니다. <br>단순히 사람의 얼굴의 위치만 감지하는 것이 아닌 얼굴을
+                                식별할 수 있는 시스템을 만듭니다.</p>
+                            <p class="fs-3 mb-6"><b>얼굴 인식을 위한 딥러닝</b></p>
+                            <p>널리 사용되는 딥 러닝 기반의 얼굴 인식 시스템 중 일부. <br>
+                                - DeepFace <br>
+                                - **DeepID** series of systems <br>
+                                - VGGFace<br>
+                                - FaceNet <br>
+                            <p class="fs-3 mb-6"><b>프로젝트를 위한 준비단계 (모듈 설치하기)</p></b>
+                            <p>1) Dlib</p>
+                            <p>Dlib은 머신러닝 알고리즘을 포함하고 있는 최신 C++ 툴킷입니다.</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        # installing dlib <br>
+                                        pip install dlib
+                            </table> <br>
+                            <p>2) face_recognition</p>
+                            <p>face_recognition 라이브러리는 dlib 기반의 얼굴 인식 기능을 포함하고 있습니다.</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        # installing face recognition <br>
+                                        pip install face recognition
+                            </table> <br>
+                            <p>3) openCV</p>
+                            <p>영상 처리를 쉽게 할 수 있는 기능을 포함하고 있는 라이브러리 입니다.</p>
+                            <table border="1">
+                                <tr>
+                                    <th>
+                                        # installing opencv <br>
+                                        pip install opencv
+                            </table> <br>
+
+                            <p class="fs-3 mb-6"><b>프로젝트 시작하기</p></b>
+                            <p>필요한 라이브러리를 설치</p>
+                            <img src="img/libr.png" width="700" height="150"> <br>
+                            <p>ㆍ훈련 이미지 데이터가 저장되어 있는 경로를 지정해줍니다.</p><br>
+                            <img src="img/traningdata.png" width="700" height="50"> <br>
+                            <p>student 폴더에 얼굴을 인식할 모든 학생의 이미지 데이터를 넣어 저장합니다. <br>
+                                이미지는 .jpg/.jpeg 형태로 저장하도록 합니다. <br><br>
+
+                                ㆍ 이미지를 저장할 변수를 만듭니다.<br>
+                                ㆍ 경로 디렉토리에 있는 모든 이미지 파일을 탐색하고, 이미지를 읽고, 이미지 목록에 이미지 배열을 추가하고, classNames에 파일 이름을 추가합니다.
+                            </p>
+                            <img src="img/traningdataimage.png" width="700" height="150"> <br><br>
+                            <p>ㆍ findencodings 함수를 생성합니다.</p>
+                            <p>ㆍ 모든 이미지를 인코딩하는 작업과 인코딩된 이미지들을 변수에 저장합니다.</p>
+                            <p>ㆍ openCV는 RGB가 아닌 BGR형태로 로딩하기 때문에 변환하도록 해주는 작업을 해줍니다.</p>
+                            <img src="img/traningdataincoding.png" width="700" height="150"> <br><br>
+                            <p>웹 캠 읽기</p>
+                            <p>ㆍ cv를 통해 웹캠을 시작.</p>
+                            <p>ㆍ 인식 부분에 대해 이미지를 1/4크기로 줄입니다. 크기를 조정하면 초당 프레임 향상 효과가 있습니다.</p>
+                            <p>ㆍ face_recognition.face_locations()는 크기가 조정된 이미지(imgS)에서 호출됩니다.</p>
+                            <p>ㆍ 출력 프레임에 오버레이하려면 얼굴 경계 상자 좌표에 4를 곱해야 합니다.</p>
+                            <p>ㆍ cv2.rectangle()을 사용하여 경계 상자를 그립니다.</p>
+                            <p>ㆍ cv2.putText()를 사용하여 출력 프레임에 일치하는 이름을 넣습니다.<br></p>
+                                <img src="img/traningdatawebcam.png" width="700" height="550"> <br><br>
+
+                                <p class="fs-3 mb-6"><b>실행화면</p></b>
+                                <img src="img/complete.png" width="700" height="450"> <br><br>
+
+                                <p class="fs-3 mb-6"><b>데이터 내보내기</p></b>
+                                <p>ㆍ csv 파일로 내보내기 위한 함수를 선언합니다.</p>
+                                <p>ㆍ 파일에 대한 권한을 읽고 쓰기가 가능한 ‘+r’로 선언합니다.</p>
+                                <p>ㆍ 이름, 시간, 날짜 순으로 데이터를 내보내기 합니다.</p>
+                                <img src="img/csv.png" width="700" height="250"> <br><br>
+
+                                <p class="fs-3 mb-6"><b>보완해야할 점</p></b>
+                                <p>ㆍ 얼굴을 인식한 후 csv파일이 아닌 웹에서 출석을 확인할 수 있도록 한다.</p>
+                                <p>ㆍ 얼굴 인식을 보다 정교하게 할 수 있도록 한다.</p>
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Binary Website 2022</p>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+
+</html>
