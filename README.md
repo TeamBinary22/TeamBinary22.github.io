@@ -1,2 +1,3 @@
 # TeamBinary22.github.io
-2022_DIT_Capstone_Binary_Notion
+
+2022학년도 동의과학대학교 인공지능컴퓨터정보과 캡스톤 디자인 프로젝트 입니다.
