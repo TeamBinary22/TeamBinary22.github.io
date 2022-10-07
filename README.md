@@ -4,7 +4,7 @@
 </div>
 
 # 🔥 Binary Team WebPage <br>
->[Binary 팀 웹 페이지 확인하기](TeamBinary22.github.io)
+>[Binary 팀 웹 페이지 확인하기](teambinary22.github.io)
 
 ## ✔ Introduce
 ㆍ주제 : 인공지능을 이용한 동아리실 출입 관리 시스템 <br>
