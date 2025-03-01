@@ -19,7 +19,117 @@
     </head>
     <body>
         <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false">
-        <!-- Header-->
+        <!-- 상단 이동하기 버튼 -->
+<div style="position:fixed; bottom:35px; right:30px; z-index:99;"> 
+    <a href="#">
+      <img src="img/top_black.png" style="width:20px" title="위로 올라가기"> 
+    </a>
+    </div>
+  
+  <style>
+  .btn_gotop {
+      display:none;
+      position:fixed;
+      bottom:50px;
+      right:50px;
+      z-index:999;
+      border:1px solid #ccc;
+      outline:none;
+      background-color:white;
+      color:#333;
+      cursor:pointer;
+      padding:15px 20px;
+      border-radius:100%;
+  }
+  </style>
+  
+  <script>
+  $(window).scroll(function(){
+      if ($(this).scrollTop() > 300){
+          $('.btn_gotop').show();
+      } else{
+          $('.btn_gotop').hide();
+      }
+  });
+  $('.btn_gotop').click(function(){
+      $('html, body').animate({scrollTop:0},400);
+      return false;
+  });
+  </script>
+  <style> 
+    .btn_gotop { 
+    display: block; 
+    position: fixed; 
+    bottom: 35px; /* 탑버튼을 화면의 가장 아래에서 몇 픽셀 떨어뜨릴 것인지 정하세요*/ 
+    right: 30px; /* 탑버튼을 화면의 가장 오른쪽에서 몇 픽셀 떨어뜨릴 것인지 정하세요*/ 
+    z-index: 999; 
+    border: 1px solid rgba(0,0,0,0.25); 
+    outline: none; 
+    background-color: white; 
+    color: rgba(0,0,0,0.7); 
+    cursor: pointer; 
+    padding: 15px 20px; 
+    border-radius: 100%; 
+    } 
+    </style>
+    <!--레이어팝업-->
+    <script src="https://code.jquery.com/jquery-latest.js"></script> 
+
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: middle; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 999999; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%; /* Could be more or less, depending on screen size */                          
+        }
+</style>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+                <a href="press.html"><img src="img/binary_news.png" style="max-width:100%; height:auto;"></a><p>
+                <center><h6 style="color: blue;">▲ 위 이미지를 클릭하시면 언론보도 홈페이지로 넘어갑니다.</h6></center></p>
+            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
+                <span class="pop_bt" style="font-size: 13pt;" >
+                     닫기
+                </span>
+            </div>
+      </div>
+    </div>
+        <!--End Modal-->
+
+		  <!--모달창 스크립트-->
+  <script type="text/javascript">
+        jQuery(document).ready(function() {
+            scrollPosition = window.pageYOffset;
+                $('#myModal').show();
+
+        });
+        //팝업 Close 기능
+        function close_pop(flag) {
+             $('#myModal').hide();
+        };
+      </script>
+
+  <!--//모달창 스크립트-->
+            <!-- Header-->
         <header>
             <a href="index.html">
             <img src="img/header.png"  style="max-width:100%; height:auto;">
@@ -106,7 +216,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Title image-->
-                            <img class="card-img-top" src="img/intro.png" width="150" height="178">
+                            <img class="card-img-top" src="img/2022ditexpo.jpg" width="150" height="178">
                             <!-- Title details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -176,7 +286,7 @@
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Binary Website 2022</p></div>
+            <div class="container"><p class="m-0 text-center text-white">COPYRIGHT ⓒ 2024 Binary All Rights Reserved</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -5,3 +5,10 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+<script type="text/javascript">
+  $(function(){
+    $(".iframe").colorbox({iframe:true, width:"1070px", height:"654px", fastIframe:false})
+    $("a.iframe[href$='movie_box.php']").trigger( "click" ); 
+  });
+</script>
